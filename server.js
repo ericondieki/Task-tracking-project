@@ -14,7 +14,7 @@ const pool = mysql.createPool({
     host: 'localhost',
     user: 'root',
     password: 'Watchdogsroot#3',
-    database: 'finaltrackerdb',
+    database: 'taskmaesterdb',
 });
 
 app.use(session({
@@ -24,6 +24,13 @@ app.use(session({
 }))
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
+
+const authenticateUser = (req, res, next) => {
+    if(req.session&&req.session.membername){
+        next();
+    }
+    
+}
 
 
 export let yourTeams = [];
@@ -38,6 +45,13 @@ app.get('/', (req, res) =>{
     const __dirname = path.dirname(__filename);
     res.sendFile(path.join(__dirname, '/static/login.html'));
 
+})
+
+app.get('/Projects', (req, res) => {
+    app.use(express.static("static"));
+    const __filename = fileURLToPath(import.meta.url);
+    const __dirname = path.dirname(__filename);
+    res.sendFile(path.join(__dirname, '/static/Projects.html'));
 })
 
 app.get('/Dashboard', (req, res) =>{
@@ -56,6 +70,14 @@ app.get('/login', (req, res) => {
 
 })
 
+app.get('/Index', (req, res) => {
+    app.use(express.static("static"));
+    const __filename = fileURLToPath(import.meta.url);
+    const __dirname = path.dirname(__filename);
+    res.sendFile(path.join(__dirname, '/static/index.html'));
+
+})
+
 app.get('/Teams', (req, res) => {
     app.use(express.static("static"));
    const __filename = fileURLToPath(import.meta.url);
@@ -63,12 +85,15 @@ app.get('/Teams', (req, res) => {
    res.sendFile(path.join(__dirname, '/static/Teams.html'));
 })
 
-app.get('/getTeams', (req, res) => {
-    const query = 'SELECT DISTINCT teamname FROM teams'
-    pool.query(query, (err, tmresults) => {
+app.get('/getTeams', authenticateUser, (req, res) => {
+    const membname = req.session.membername;
+    const query = 'SELECT teams.teamname FROM projects INNER JOIN teams ON projects.projectname=teams.projectname WHERE projects.membername=?';
+    pool.query(query, [membname], (err, tmresults) => {
         if (err) throw err;
+        if(tmresults.length>0){
+            res.status(200).send(tmresults);
+        }
         console.log(tmresults);
-        res.send(tmresults);
     })   
     })
 
@@ -79,21 +104,27 @@ app.get('/Tasks', (req, res) => {
   res.sendFile(path.join(__dirname, '/static/Tasks.html'));
 })
 
-app.get('/getTasks', (req, res) => {
-    const query = 'SELECT * FROM tasks';
-    pool.query(query, (err, tskresults) => {
+app.get('/getTasks', authenticateUser, (req, res) => {
+    const task = req.session.membername;
+    const query = 'SELECT tasks.taskname, tasks.teamname FROM projects INNER JOIN teams ON projects.projectname=teams.projectname INNER JOIN tasks ON teams.teamname=tasks.teamname WHERE projects.membername=?';
+    pool.query(query, [task], (err, tskresults) => {
         if (err) throw err;
+        if(tskresults.length>0){
         console.log(tskresults);
         res.send(tskresults);
+        }
     })
 })
 
-app.get('/getLocation', (req, res) => {
-    const query = 'SELECT * FROM tasks';
-    pool.query(query, (err, locresults) => {
+app.get('/getLocation', authenticateUser, (req, res) => {
+    const taskloc = req.session.membername;
+    const query = 'SELECT tasks.taskname, tasks.teamname, tasks.coordinates, tasks.description FROM projects INNER JOIN teams ON projects.projectname=teams.projectname INNER JOIN tasks ON teams.teamname=tasks.teamname WHERE projects.membername=?';
+    pool.query(query, [taskloc], (err, locresults) => {
         if (err) throw err;
+        if(locresults.length>0){
         console.log(locresults);
         res.send(locresults);
+        }
     })
 })
 
@@ -104,12 +135,15 @@ app.get('/Members', (req, res) => {
    res.sendFile(path.join(__dirname, '/static/Members.html'));
 })
 
-app.get('/getMembers', (req, res) => {
-    const query = 'SELECT DISTINCT membername FROM members';
-    pool.query(query, (err, results) => {
+app.get('/getMembers', authenticateUser, (req, res) => {
+    const memb = req.session.membername;
+    const query = 'SELECT members.membername FROM projects INNER JOIN teams ON projects.projectname=teams.projectname INNER JOIN members ON teams.teamname=members.teamname WHERE projects.membername=?';
+    pool.query(query, [memb], (err, results) => {
         if (err) throw err;
+        if(results.length>0){
         console.log(results);
         res.send(results);
+        }
     })
 })
 
@@ -165,6 +199,7 @@ app.post('/login', (req, res) => {
             req.session.loggedin = true;
             req.session.membername = membername;
             res.redirect('/Dashboard')
+            
         }
         else{
             res.status(400).send("This account does not exist");
@@ -173,12 +208,47 @@ app.post('/login', (req, res) => {
 
 })
 
+app.get('/logout', (req, res) => {
+    req.session.destroy((err) => {
+        if (err) throw err;
+        res.redirect('/login');
+    })
+})
+
+app.post('/Projects', (req, res) => {
+    const memb = req.session.membername;
+    app.use(express.static("static"));
+    const projInput = req.body;
+    const fproj = Object.values(projInput);
+    const fpInput = {
+        projectname: String(fproj),
+        membername: String(memb)
+    }
+console.log(fproj[0]);
+console.log(memb);
+    const schema = Joi.object({
+        projectname : Joi.string().max(20).required(),
+        membername : Joi.string().max(50).required()
+    });
+    const result = schema.validate(fpInput);
+    if(result.error){
+        res.status(400).send(result.error.details[0].message);
+    }
+    let sql = 'INSERT INTO projects SET ?';
+    pool.query(sql, fpInput, (err, results) => {
+        if(err) throw err;
+        console.log(results);
+    })
+    res.status(204).json(req.body);
+})
+
 app.post('/Teams', (req, res) => {
     app.use(express.static("static"))
     const teamInput = req.body;
 
     const schema = Joi.object({
-        teamname : Joi.string().max(12).required()
+        teamname : Joi.string().max(12).required(),
+        projectname : Joi.string().max(20).required()
     });
 
     const result = schema.validate(teamInput);

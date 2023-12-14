@@ -322,6 +322,149 @@ font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida San
     cursor: pointer;
 }
 
+.project-page{
+    position: absolute;
+    left: 170px;
+    height: 100%;
+    width: 100%;
+    background-image: url("teampic.jpg");
+    background-size: 90% 88%;
+    padding-right: 50px;
+    z-index: 9;
+    filter: blur(5px);
+    -webkit-filter: blur(5px);
+}
+
+.project-content{
+    position: relative;
+    left: 170px;
+    height: 100%;
+    width: 1196.4px;
+    z-index: 10;
+}
+
+.project-content h1{
+    font-size: 30px;
+    color: white;
+    padding-left: 40px;
+    padding-top: 20px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    position: relative;
+}
+
+.projects-par{
+    top: -10px;
+    padding-left: 350px;
+    font-size: 60px;
+    color: white;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    background-color:black;
+    background-image: linear-gradient(to top, black 0%, darkgrey 100%);
+    background-size: 100%;
+    -webkit-background-clip: text;
+    -moz-background-kit: text;
+    -webkit-text-fill-color: transparent;
+    margin-top: 150px;
+    -webkit-text-stroke: 0.6px black;
+    position: absolute;
+    z-index: 5;
+}
+
+.project-slide{
+    border: 0.1px solid black;
+    background: rgba(149, 165, 166, 0.5);
+    width: 50%;
+    height: 80px;
+    margin-left: 150px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+.project-slide h2{
+    margin-left: 20px;
+}
+
+.project-slide p{
+    margin-left: 20px;
+}
+
+.project-slide:hover{
+    width: 60%;
+    height: 90px;
+    transition: all 0.3s ease-in-out;
+    background: rgba(149, 165, 166, 0.7);
+    cursor: pointer;
+}
+
+.p-scroller{
+    max-height: 400px;
+    min-height: 140px;
+    overflow-y: auto;
+    overscroll-behavior-inline: contain;
+    position: relative;
+}
+
+.proj-btn{
+    margin-left: 50%;
+    margin-top: 25px;
+    height: 80px;
+    width: 80px;
+    background: #f77062;
+    background-image: linear-gradient(to top, #ff0844 0%, #ffb199 100%);
+    border: none;
+    border-radius: 50px;
+    outline: none !important;
+    box-shadow: none !important;
+    position: absolute;
+}
+
+.proj-btn::before{
+    content: "+";
+    height:80px;
+    width:80px;
+    font-size:80px;
+    display:flex;
+    flex-direction:row;
+    align-items:center;
+    justify-content:center;
+    font-weight:bold;
+    font-family:courier;
+    color:white;
+}
+
+.proj-btn:hover{
+    transform: scale(1.3);
+    background: #4837ff;
+    background-image: linear-gradient(to top, #4837ff 0%, white 100%);
+    transition: all 0.3s ease-in-out;
+}
+
+.project-form{
+    position: absolute;
+    border: 1px solid black;
+    margin-left: 515px;
+    z-index: 15;
+    bottom: 250px;
+    height: 270px;
+    width: 550px;
+    position: fixed;
+}
+
+.proj-form h3{
+    display: flex;
+    justify-content: center;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.project-input{
+    display: flex;
+height: 40px;
+width: 300px;
+margin-left: 100px;
+margin-top: 20px;
+font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
 .teams-page{
     position: absolute;
     left: 170px;
