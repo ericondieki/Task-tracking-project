@@ -14,57 +14,64 @@ html{
 
 
 .sidenav{
-    height: 100%;
-    width: 220px;
-    position: fixed;
+    height: 50px;
+    width: 100%;
+    position: sticky;
     top: 76px;
     left: 0;
-    background: white;
+    background: rgb(204, 85, 0);
     overflow-x: hidden;
     overflow-y: hidden;
     padding-top: 0px;
-    z-index: 0;
-    border: white solid;
+    z-index: 20;
+    border: 1px black solid;
     
 }
 
 .sidenav a{
 font-size: 20px;
 display: block;
-color: black;
-padding: 6px 8px 6px 16px;
+color: white;
+height: 100%;
+padding-top: 9px;
 text-decoration: none;
 font-family: cursive;
 border: transparent;
-border-radius: 20px;
 font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 cursor: pointer;
 }
 
 .sidenav a:hover{
-    background-color: black;
-    background-image: linear-gradient(to top, grey 0%, black 100%);
-    font-size: 25px;
-    color: beige;
+    border-bottom: 2px solid black;
+    color: black;
     transition: all 0.3s ease-in-out;
 }
 
 .side-list{
+    display: flex;
+    justify-content: center;
     list-style-type: none;
     padding-left: 0;
     margin-left: 0;
-    padding-top: 20px;
 }
 
+.side-list li{
+    float: left;
+    height: 100%;
+    padding-left: 4%;
+    padding-right: 4%;
+}
 
+.side-font{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;;
+}
 
 
 
 #mapss{
 position: absolute;
-left: 170px;
-width: 99.5%;
-height: 100%;
+width: 100%;
+height: 80%;
 }
 
 
@@ -80,7 +87,6 @@ height: 100%;
     top: 0;
     z-index: 999;
     background-size: cover;
-    background-image: url('navpic2.jpg');
 }
 
 .navbar__container {
@@ -96,13 +102,14 @@ height: 100%;
 
 #navbar__logo {
     background-color: #ff8177;
-    background-image: linear-gradient(to top, #ff0844 0%, #ffb199 100%);
+    background-image: linear-gradient(to top, rgb(255, 136, 0) 0%, rgb(204, 85, 0) 100%);
     background-size: 100%;
     -webkit-background-clip: text;
     -moz-background-kit: text;
     -webkit-text-fill-color: transparent;
     display: flex;
     align-items: center;
+    justify-content: center;
     cursor: pointer;
     text-decoration: none;
     font-size: 2rem;
@@ -131,6 +138,7 @@ height: 100%;
     padding: 0 1rem;
     height: 100%;
     cursor: pointer;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;;
     }
 
 .navbar__btn {
@@ -149,12 +157,13 @@ width: 100%;
     padding: 10px 20px;
     height: 100%;
     width: 100%;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     border: none;
     outline: none;
     border-radius: 4px;
     background: #f77062;
     color: #fff;
-    background-image: linear-gradient(to top, #ff0844 0%, #ffb199 100%);
+    background-image: linear-gradient(to top, rgb(255, 136, 0) 0%, rgb(204, 85, 0) 100%);
     cursor: pointer;
 }
 
@@ -324,11 +333,10 @@ font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida San
 
 .project-page{
     position: absolute;
-    left: 170px;
     height: 100%;
     width: 100%;
     background-image: url("teampic.jpg");
-    background-size: 90% 88%;
+    background-size: cover;
     padding-right: 50px;
     z-index: 9;
     filter: blur(5px);
@@ -337,7 +345,6 @@ font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida San
 
 .project-content{
     position: relative;
-    left: 170px;
     height: 100%;
     width: 1196.4px;
     z-index: 10;
@@ -355,7 +362,7 @@ font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida San
 .projects-par{
     top: -10px;
     padding-left: 350px;
-    font-size: 60px;
+    font-size: 30px;
     color: white;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     background-color:black;
@@ -407,10 +414,10 @@ font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida San
 .proj-btn{
     margin-left: 50%;
     margin-top: 25px;
-    height: 80px;
-    width: 80px;
+    height: 40px;
+    width: 40px;
     background: #f77062;
-    background-image: linear-gradient(to top, #ff0844 0%, #ffb199 100%);
+    background-image: linear-gradient(to top, rgb(255, 136, 0) 0%, #ffb199 100%);
     border: none;
     border-radius: 50px;
     outline: none !important;
@@ -420,9 +427,9 @@ font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida San
 
 .proj-btn::before{
     content: "+";
-    height:80px;
-    width:80px;
-    font-size:80px;
+    height:40px;
+    width:40px;
+    font-size:40px;
     display:flex;
     flex-direction:row;
     align-items:center;
@@ -467,11 +474,10 @@ font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida San
 
 .teams-page{
     position: absolute;
-    left: 170px;
     height: 100%;
     width: 100%;
     background-image: url("realteam.jpg");
-    background-size: 90% 88%;
+    background-size: cover;
     padding-right: 50px;
     z-index: 9;
     filter: blur(5px);
@@ -480,7 +486,7 @@ font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida San
 
 .team-content{
     position: relative;
-    left: 170px;
+    margin-top: 3%;
     height: 100%;
     width: 1196.4px;
     z-index: 10;
@@ -662,9 +668,22 @@ font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida San
     margin-left: 190px;
 }
 
+.tasks-page{
+    position: absolute;
+    height: 100%;
+    width: 1333px;
+    background-image: url("taskspic.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding-right: 50px;
+    z-index: 9;
+    filter: blur(3.8px);
+    -webkit-filter: blur(3.8px);
+}
+
 .tasks-content{
     position: relative;
-    left: 170px;
+    margin-top: 3%;
     height: 100%;
     width: 1196px;
     z-index: 10;
@@ -679,18 +698,7 @@ font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida San
     position: relative;
 }
 
-.tasks-page{
-    position: absolute;
-    left: 170px;
-    height: 100%;
-    width: 1333px;
-    background-image: url("taskspic.jpg");
-    background-size: 90% 88%;
-    padding-right: 50px;
-    z-index: 9;
-    filter: blur(3.8px);
-    -webkit-filter: blur(3.8px);
-}
+
 
 .task-btn{
     margin-left: 560px;
@@ -844,7 +852,7 @@ font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida San
 
 .members-content{
     position: relative;
-    left: 170px;
+    margin-top: 3%;
     height: 100%;
     width: 1196px;
     z-index: 10;
@@ -861,11 +869,11 @@ font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida San
 
 .members-page{
     position: absolute;
-    left: 170px;
     height: 100%;
     width: 1333px;
     background-image: url("memberpic.jpg");
-    background-size: 90% 88%;
+    background-size: cover;
+    background-repeat: no-repeat;
     padding-right: 50px;
     z-index: 9;
     filter: blur(3.8px);
