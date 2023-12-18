@@ -54,6 +54,18 @@ app.get('/Projects', (req, res) => {
     res.sendFile(path.join(__dirname, '/static/Projects.html'));
 })
 
+app.get('/getProjects', (req, res) => {
+    const project = req.session.membername;
+    const sql = 'SELECT projects.projectname FROM accounts INNER JOIN projects ON accounts.membername=projects.membername WHERE accounts.membername=?'
+    pool.query(sql, [project], (err, results) => {
+        if(err) throw err;
+        if(results.length>0){
+            console.log(results);
+            res.send(results);
+        }
+    })
+})
+
 app.get('/Dashboard', (req, res) =>{
     app.use(express.static("static"));
     const __filename = fileURLToPath(import.meta.url);
@@ -96,6 +108,18 @@ app.get('/getTeams', authenticateUser, (req, res) => {
         console.log(tmresults);
     })   
     })
+
+app.get('/getTeamProjects', (req, res) => {
+    const project = req.session.membername;
+    const sql = 'SELECT projects.projectname FROM accounts INNER JOIN projects ON accounts.membername=projects.membername WHERE accounts.membername=?'
+    pool.query(sql, [project], (err, results) => {
+        if(err) throw err;
+        if(results.length>0){
+            console.log(results);
+            res.send(results);
+        }
+    })
+})    
 
 app.get('/Tasks', (req, res) => {
     app.use(express.static("static"));

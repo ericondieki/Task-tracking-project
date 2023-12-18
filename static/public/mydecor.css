@@ -71,7 +71,7 @@ cursor: pointer;
 #mapss{
 position: absolute;
 width: 100%;
-height: 80%;
+height: 81%;
 }
 
 
@@ -326,33 +326,32 @@ font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida San
 .start-btn:hover{
     transform: scale(1.3);
     background: #ff0844;
-    background-image: linear-gradient(to top, #ff0844 0%, white 100%);
+    background-image: linear-gradient(to top, #ff0844 0%, rgb(209, 208, 208) 100%);
     transition: all 0.3s ease-in-out;
     cursor: pointer;
 }
 
 .project-page{
     position: absolute;
-    height: 100%;
+    height: 81%;
     width: 100%;
-    background-image: url("teampic.jpg");
+    background-image: linear-gradient(to bottom, white 0%, rgb(190, 190, 190) 100%);
     background-size: cover;
     padding-right: 50px;
     z-index: 9;
-    filter: blur(5px);
-    -webkit-filter: blur(5px);
+   
 }
 
 .project-content{
     position: relative;
     height: 100%;
-    width: 1196.4px;
+    width: 100%;
     z-index: 10;
 }
 
 .project-content h1{
     font-size: 30px;
-    color: white;
+    color: black;
     padding-left: 40px;
     padding-top: 20px;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
@@ -360,13 +359,14 @@ font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida San
 }
 
 .projects-par{
+    transform: translate(-50%, -50%);
+    margin-left: 50%;
     top: -10px;
-    padding-left: 350px;
     font-size: 30px;
     color: white;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     background-color:black;
-    background-image: linear-gradient(to top, black 0%, darkgrey 100%);
+    background-image: linear-gradient(to top, black 0%, black 100%);
     background-size: 100%;
     -webkit-background-clip: text;
     -moz-background-kit: text;
@@ -412,6 +412,7 @@ font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida San
 }
 
 .proj-btn{
+    transform: translate(-50%, -50%);
     margin-left: 50%;
     margin-top: 25px;
     height: 40px;
@@ -449,10 +450,11 @@ font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida San
 .project-form{
     position: absolute;
     border: 1px solid black;
-    margin-left: 515px;
+    transform: translate(-50%, -50%);
+    margin-left: 50%;
     z-index: 15;
-    bottom: 250px;
-    height: 270px;
+    bottom: 70px;
+    height: 240px;
     width: 550px;
     position: fixed;
 }
@@ -476,7 +478,7 @@ font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida San
     position: absolute;
     height: 100%;
     width: 100%;
-    background-image: url("realteam.jpg");
+    background-image: linear-gradient(to bottom, white 0%, rgb(190, 190, 190) 100%);
     background-size: cover;
     padding-right: 50px;
     z-index: 9;
@@ -486,15 +488,14 @@ font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida San
 
 .team-content{
     position: relative;
-    margin-top: 3%;
     height: 100%;
-    width: 1196.4px;
+    width: 100%;
     z-index: 10;
 }
 
 .team-content h2{
     font-size: 30px;
-    color: white;
+    color: black;
     padding-left: 40px;
     padding-top: 20px;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
@@ -503,13 +504,14 @@ font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida San
 
 
 .team-par {
+    transform: translate(-50%, -50%);
+    margin-left: 50%;
     top: -10px;
-    padding-left: 310px;
-    font-size: 60px;
+    font-size: 30px;
     color: white;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     background-color:black;
-    background-image: linear-gradient(to top, black 0%, darkgrey 100%);
+    background-image: linear-gradient(to top, black 0%, black 100%);
     background-size: 100%;
     -webkit-background-clip: text;
     -moz-background-kit: text;
@@ -523,24 +525,25 @@ font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida San
 
 
 .team-btn{
-    margin-left: 520px;
-    margin-top: 80px;
-   height: 80px;
-   width: 80px;
-   background: #f77062;
-   background-image: linear-gradient(to top, #ff0844 0%, #ffb199 100%);
-   border: none;
-   border-radius: 50px;
-   outline: none !important;
-   box-shadow: none !important;
-   position: absolute;
+    transform: translate(-50%, -50%);
+    margin-left: 50%;
+    margin-top: 75px;
+    height: 40px;
+    width: 40px;
+    background: #f77062;
+    background-image: linear-gradient(to top, rgb(255, 136, 0) 0%, #ffb199 100%);
+    border: none;
+    border-radius: 50px;
+    outline: none !important;
+    box-shadow: none !important;
+    position: absolute;
 }
 
 .team-btn::before{
     content: "+";
-    height:80px;
-    width:80px;
-    font-size:80px;
+    height:40px;
+    width:40px;
+    font-size:40px;
     display:flex;
     flex-direction:row;
     align-items:center;
@@ -612,9 +615,11 @@ position: relative;
 .team-form{
     position: absolute;
     border: 1px solid black;
-    margin-left: 470px;
+    transform: translate(-50%, -50%);
+    margin-left: 50%;
+    top: 50%;
     z-index: 15;
-    height: 200px;
+    height: 250px;
     width: 500px;
     position: fixed;
 }
@@ -632,6 +637,15 @@ width: 300px;
 margin-left: 100px;
 margin-top: 20px;
 font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+#my_dropdown{
+    margin-left: 30%;
+    margin-top: 5%;
+}
+
+#your_dropdown{
+    
 }
 
 .confirm-btn{

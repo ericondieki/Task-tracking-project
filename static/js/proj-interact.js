@@ -1,4 +1,16 @@
-
+async function getProjects(){
+    const res = await fetch('/getProjects');
+    const projData = await res.json();
+    console.log(projData);
+    projectSlider.push(projData);
+    const parr = projectSlider[0];
+    parr.forEach((item, index) => {
+        phead.innerHTML = Object.values(parr[index]);
+        finalPslide.appendChild(pslide.cloneNode(true));
+        document.querySelector('.projects-par').innerHTML = "";
+    })
+}
+getProjects();
 
 let projectSlider = [];
 let finalPslide = document.querySelector('.p-scroller');

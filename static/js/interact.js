@@ -12,6 +12,8 @@ async function getTeams(){
 }
 getTeams();
 
+
+
 async function getTasks(){
   const res = await fetch('/getTasks');
   const datatsk = await res.json();
