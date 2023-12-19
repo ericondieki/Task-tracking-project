@@ -171,6 +171,17 @@ app.get('/getMembers', authenticateUser, (req, res) => {
     })
 })
 
+app.get('/getMemberTeams', (req, res) => {
+    const memb = req.session.membername;
+    const sql = 'SELECT teams.teamname FROM projects INNER JOIN teams ON projects.projectname=teams.projectname WHERE projects.membername=?'
+    pool.query(sql, [memb], (err, results) => {
+        if(err) throw err;
+        if(results.length>0){
+            res.send(results);
+        }
+    })
+})
+
 app.get('/Guide', (req, res) => {
     app.use(express.static("static"));
    const __filename = fileURLToPath(import.meta.url);

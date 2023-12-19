@@ -12,6 +12,21 @@ async function getMembers(){
 }
 getMembers();
 
+async function getMemberTeams(){
+    const mSlider = [];
+    const mdropdown = document.getElementById('memb_dropdown');
+    const res = await fetch('/getMemberTeams');
+    const membData = await res.json();
+    mSlider.push(membData);
+    const mparr = mSlider[0];
+    mparr.forEach((item, index) => {
+        const option = document.createElement('option');
+        mdropdown.appendChild(option);
+        option.text = Object.values(mparr[index]);
+    })
+
+}
+getMemberTeams();
 
 let memberSlider =[];
 let mslide = document.createElement("ol");
