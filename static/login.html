@@ -3,8 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="orange">
     <title>TaskMaester</title>
     <link rel="stylesheet" href="public/mydecor.css">
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" href="public/tm.png">
 </head>
 <body>
     <div class="login-page">
@@ -18,10 +21,11 @@
         </form>
 
     </div>
-    <p>Dont have an account?</p>
+    <p class="login-prompt">Dont have an account?</p>
     <form method="get" action="signup.html">
     <input type="submit" class="signup-btn" value="Sign up">
     </form>
     </div>
+    <script src="pwa.js"></script>
 </body>
 </html>

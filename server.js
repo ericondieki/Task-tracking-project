@@ -228,7 +228,8 @@ app.post('/login', (req, res) => {
     }
     const membername = newInfo['membername'];
     const membemail = newInfo['membemail']
-    pool.query('SELECT * FROM accounts WHERE membername = ? AND membemail = ?', [membername, membemail], (err, result) => {
+    const sql = 'SELECT * FROM accounts WHERE membername = ? AND membemail = ?';
+    pool.query(sql, [membername, membemail], (err, result) => {
         if(err) throw err;
         if(result.length > 0){
             req.session.loggedin = true;

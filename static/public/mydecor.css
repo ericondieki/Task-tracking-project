@@ -41,6 +41,7 @@ font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida San
 cursor: pointer;
 }
 
+
 .sidenav a:hover{
     border-bottom: 2px solid black;
     color: black;
@@ -95,7 +96,6 @@ height: 81%;
     height: 80px;
     z-index: 1;
     width: 100%;
-    max-width: 1300px;
     margin: 0 auto;
     padding: 0 50 px;
 }
@@ -104,6 +104,7 @@ height: 81%;
     background-color: #ff8177;
     background-image: linear-gradient(to top, rgb(255, 136, 0) 0%, rgb(204, 85, 0) 100%);
     background-size: 100%;
+    margin-left: 3%;
     -webkit-background-clip: text;
     -moz-background-kit: text;
     -webkit-text-fill-color: transparent;
@@ -112,7 +113,7 @@ height: 81%;
     justify-content: center;
     cursor: pointer;
     text-decoration: none;
-    font-size: 2rem;
+    font-size: 32px;
     padding-bottom: 15px;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-style: italic;
@@ -123,6 +124,7 @@ height: 81%;
     align-items: center;
     list-style: none;
     text-align: center;
+    margin-right: 2%;
 }
 
 .navbar__item {
@@ -187,19 +189,23 @@ font-size: 25px;
     position: absolute;
     height: 100%;
     width: 100%;
-    background-image: url("realteam.jpg");
+    background-image: linear-gradient(to top, white 0%, orange 100%);
     background-size: cover;
     background-repeat: no-repeat;
 }
 .login-page p{
     display: flex;
     justify-content: center;
+    transform: translate(-50%, -50%);
+    margin-left: 50%;
     margin-top: 40px;
-    color: white;
+    color: black;
 }
 
 .signup-btn{
-    margin-left: 660px;
+    transform: translate(-50%, -50%);
+    margin-left: 50%;
+    margin-top: 10px;
 }
 
 .signup-btn:hover{
@@ -210,7 +216,7 @@ font-size: 25px;
     position: absolute;
     height: 100%;
     width: 100%;
-    background-image: url("teampic.jpg");
+    background-image: linear-gradient(to bottom, white 0%, orange 100%);
     background-size: cover;
     background-repeat: no-repeat;
 }
@@ -233,7 +239,8 @@ font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida San
 
 #username{
 display: flex;
-margin-left: 450px;
+transform: translate(-50%, -50%);
+margin-left: 50%;
 margin-top: 100px;
 text-align: center;
 height: 50px;
@@ -244,7 +251,8 @@ font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida San
 
 #useremail{
     display: flex;
-    margin-left: 450px;
+    transform: translate(-50%, -50%);
+    margin-left: 50%;
     margin-top: 40px;
     text-align: center;
     height: 50px;
@@ -254,7 +262,8 @@ font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida San
     }
 
 #login-sub{
-    margin-left: 640px;
+    transform: translate(-50%, -50%);
+    margin-left: 50%;
     margin-top: 40px;
     height: 50px;
     width: 100px;
@@ -267,7 +276,8 @@ font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida San
 }
 
 #login-sub:hover{
-    transform: scale(1.3);
+    transform-origin: top left;
+    transform: translate(-50%, -50%) scale(1.3);
     background: #4837ff;
     background-image: linear-gradient(to top, #4837ff 0%, white 100%);
     transition: all 0.3s ease-in-out;
@@ -441,7 +451,8 @@ font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida San
 }
 
 .proj-btn:hover{
-    transform: scale(1.3);
+    transform-origin: top left;
+    transform: translate(-50%, -50%) scale(1.3);
     background: #4837ff;
     background-image: linear-gradient(to top, #4837ff 0%, white 100%);
     transition: all 0.3s ease-in-out;
@@ -554,7 +565,8 @@ font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida San
 }
 
 .team-btn:hover{
-    transform: scale(1.3);
+    transform-origin: top left;
+    transform: translate(-50%, -50%) scale(1.3);
     background: #4837ff;
     background-image: linear-gradient(to top, #4837ff 0%, white 100%);
     transition: all 0.3s ease-in-out;
@@ -679,8 +691,8 @@ font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida San
     z-index: 20;
     width: 850px;
     height: 460px;
-    top: 90px;
-    margin-left: 190px;
+   transform: translate(-50%, -28%);
+   margin-left: 50%;
 }
 
 .tasks-page{
@@ -744,7 +756,8 @@ font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida San
 }
 
 .task-btn:hover{
-    transform: scale(1.3);
+    transform-origin: top left;
+    transform: translate(-50%, -50%) scale(1.3);
     background: #4837ff;
     background-image: linear-gradient(to top, #4837ff 0%, white 100%);
     transition: all 0.3s ease-in-out;
@@ -857,6 +870,7 @@ font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida San
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
+
 #team-coord{
     display: flex;
     height: 40px;
@@ -964,7 +978,8 @@ font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida San
 }
 
 .member-btn:hover{
-    transform: scale(1.3);
+    transform-origin: top left;
+    transform: translate(-50%,-50%) scale(1.3);
     background: #4837ff;
     background-image: linear-gradient(to top, #4837ff 0%, white 100%);
     transition: all 0.3s ease-in-out;
@@ -1021,5 +1036,31 @@ font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida San
    transition: all 0.3s ease-in-out;
    cursor: pointer;
 }
+
+@media screen and (max-width: 1050px) {
+    .sidenav a{
+        font-size: 18px;
+    }
+    .side-list li{
+        padding-left: 2%;
+        padding-right: 2%;
+    }
+    .bi{
+        width: 12px;
+        height: 30px;
+    }
+    #navbar__logo{
+        font-size: 25px;
+    }
+}
+
+@media screen and (max-width: 900px){
+    
+    .bi{
+        width: 16px;
+        height: 35px;
+    }
+}
+
 
 @import "https://unpkg.com/open-props";
