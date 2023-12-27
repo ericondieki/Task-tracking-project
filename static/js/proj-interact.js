@@ -17,6 +17,7 @@ let finalPslide = document.querySelector('.p-scroller');
 let pbutton = document.querySelector('.proj-btn');
 let pslide = document.createElement("div");
 pslide.setAttribute('class', 'project-slide');
+pslide.setAttribute('onclick', 'openProject()')
 let phead = document.createElement("h2");
 phead.setAttribute('class', 'proj-head');
 let ppar = document.createElement("p");
@@ -52,3 +53,12 @@ function addProject(){
     document.querySelector(".projects-par").innerHTML="No Projects Created";
 }
 
+const pmodall = document.querySelector('.project-modal');
+function openProject(){
+    const pshead = document.createElement('h1');
+    pshead.setAttribute('class', 'slide-head');
+    pshead.innerHTML = pslide.innerHTML;
+    pmodall.appendChild(pshead);
+    console.log("You pushed it!!!")
+    pmodall.show();
+}

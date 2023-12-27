@@ -487,6 +487,12 @@ margin-top: 20px;
 font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
+.project-modal{
+  transform: translate(-50%, -50%);
+  margin-left: 50%;
+  height: 50%;
+}
+
 .teams-page{
     position: absolute;
     height: 100%;
