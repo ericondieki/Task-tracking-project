@@ -203,11 +203,14 @@ app.post('/signup',  (req,res) => {
     if(result.error){
     return res.status(400).send(result.error.details[0].message);
     }
+    const membname = newInfo['membername'];
     let sql = "INSERT INTO accounts SET ?"
     pool.query(sql, newInfo, (err, result) => {
         if(err) throw err;
         console.log(result);
-        res.redirect('/login')
+        req.session.loggedin=true;
+        req.session.membername = membname;
+        res.redirect('/Dashboard');
     })
    
 })
