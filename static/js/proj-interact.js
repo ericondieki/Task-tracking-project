@@ -1,3 +1,4 @@
+// Function to retrieve projects from the database
 async function getProjects(){
     const res = await fetch('/getProjects');
     const projData = await res.json();
@@ -10,14 +11,15 @@ async function getProjects(){
         document.querySelector('.projects-par').innerHTML = "";
     })
 }
-getProjects();
+getProjects(); // Retrieving projects from the database
 
+// Creating and manipulaing the DOM elements surrounding the projects page 
 let projectSlider = [];
 let finalPslide = document.querySelector('.p-scroller');
 let pbutton = document.querySelector('.proj-btn');
 let pslide = document.createElement("div");
 pslide.setAttribute('class', 'project-slide');
-pslide.setAttribute('onclick', 'openProject()')
+pslide.setAttribute('onclick', 'openProject(this)')
 let phead = document.createElement("h2");
 phead.setAttribute('class', 'proj-head');
 let ppar = document.createElement("p");
@@ -29,11 +31,13 @@ const pdialog = document.querySelector('.project-form');
 const pform = document.querySelector('.proj-form');
 const pinput = document.querySelector('.project-input');
 
+// Click event for the add projects button thatpresents the form for filling out a project's details
 pbutton.addEventListener('click', () => {
     pdialog.show();
     pinput.value = "";
 })
-
+ 
+// Submit event that creates a new unique project upon form submission
 pform.addEventListener('submit', () => {
     const pinputval = document.querySelector('.project-input').value;
     phead.innerHTML = pinputval;
@@ -41,6 +45,7 @@ pform.addEventListener('submit', () => {
     addProject();
 })
 
+// Function component to add unique project to the page 
 function addProject(){
     projectSlider.length+=2;
     for(projectSlider.length===0; projectSlider.length>0; pbutton.addEventListener("click", projectSlider.length--)){
@@ -54,11 +59,11 @@ function addProject(){
 }
 
 const pmodall = document.querySelector('.project-modal');
-function openProject(){
+function openProject(clickedSlide){
     const pshead = document.createElement('h1');
     pshead.setAttribute('class', 'slide-head');
-    pshead.innerHTML = pslide.innerHTML;
+    pshead.innerHTML = clickedSlide.querySelector(".proj-head").innerHTML;
     pmodall.appendChild(pshead);
-    console.log("You pushed it!!!")
+    console.log("You pushed it!!!");
     pmodall.show();
 }

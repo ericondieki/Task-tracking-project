@@ -1,3 +1,4 @@
+// Function to retrieve teams from the database
 async function getTeams(){
  const res = await fetch('/getTeams');
  const datat = await res.json();
@@ -10,10 +11,10 @@ async function getTeams(){
   document.getElementById("team-id").innerHTML = "";
  })
 }
-getTeams();
+getTeams(); // Retrieve teams from the database
 
 
-
+// Function to retrieve tasks from the database
 async function getTasks(){
   const res = await fetch('/getTasks');
   const datatsk = await res.json();
@@ -30,9 +31,9 @@ async function getTasks(){
     document.getElementById("task-id").innerHTML = "";
   })
 }
-getTasks();
+getTasks(); // Retrieve tasks from the database
 
-
+// Creating the manpulatng the DOM element surrounging the teams page
 let teamSlider = [];
 let tslide = document.createElement("div");
 tslide.setAttribute('class', 'slide');
@@ -43,7 +44,7 @@ let finalSlide = document.getElementById("t-scroll");
   let modalPos = document.querySelector('#t-form');
   let tInputs = document.querySelector('#team-input');
   
-
+// Creating and manipulting the DOM element surrounding the tasks page
 let taskSlider = [];
 let tskslide = document.createElement("div");
 tskslide.setAttribute('class', 'big-task');
@@ -72,35 +73,37 @@ const tskForm = document.querySelector('#tsk-form');
 const tkForm = document.querySelector('#tk-form');
 
 
-
+// Click event event for the add teams button that presents a form on the teams page
 openTform.addEventListener('click', () =>{
     tForm.show();
     modalPos.style.bottom = '215px';
     tInputs.value = "";
 } )
-
+ 
+// Submit event script for the form that appears with the teams page add team button
 tmForm.addEventListener('submit', (e) => {
   let tmfInput = document.getElementById("team-input").value;
   slidePar.innerHTML = tmfInput;
   tForm.close();
-  addTeam();
+  addTeam(); // Execute fuction to add a team to the teams page upon form submission
 })
 
- 
+ // Function that open form for filling out tasks on tasks page upon click of the tasks button
 function openTask(){
   tskForm.show();
   tskInputs.value = "";
 }
 
+// Function to execute script to add task to the tasks page upon form submission
 function showTask(){
   let tkfInput = document.getElementById("task-input").value;
   tskTitle.innerHTML = tkfInput;
   tskForm.close();
-  addTask();
+  addTask(); 
 }
 
 
-
+// Function component that faciliates the appearance of multiple teams within the teams page 
 function addTeam(){
     teamSlider.length +=2;
 for(teamSlider.length === 0; teamSlider.length >0; document.getElementById("t-button").addEventListener("click", teamSlider.length--)){
@@ -120,7 +123,7 @@ document.getElementById("team-id").innerHTML = "No Teams Created";
 
 
 
-
+// Function component for the appearance of multiple tasks on tasks page
 function addTask(){
     taskSlider.length +=2;
     for(taskSlider.length === 0; taskSlider.length >0; document.getElementById("tsk-button").addEventListener("click", taskSlider.length--)){

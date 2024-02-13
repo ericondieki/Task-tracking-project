@@ -1,3 +1,4 @@
+// Importing every dependancy needed for the server
 import Joi from 'joi';
 import express from 'express';
 import session from 'express-session';
@@ -10,6 +11,7 @@ import { fileURLToPath } from 'url';
 import mysql from 'mysql2';
 import { Session } from 'inspector';
 
+// Creating a link to a spcific database
 const pool = mysql.createPool({
     host: 'localhost',
     user: 'root',
@@ -17,6 +19,7 @@ const pool = mysql.createPool({
     database: 'taskmaesterdb',
 });
 
+// Telling the epress to use a dependancy that allows us to create sessions for users
 app.use(session({
     secret: 'secret',
     resave: true,
@@ -25,6 +28,7 @@ app.use(session({
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 
+// Authentication script that is used for each page after login/signup
 const authenticateUser = (req, res, next) => {
     if(req.session&&req.session.membername){
         next();
@@ -38,7 +42,7 @@ export let yourTasks = [];
 export let yourMembers = [];
 
 
-
+// Serving the login page
 app.get('/', (req, res) =>{
     app.use(express.static("static"));
     const __filename = fileURLToPath(import.meta.url);
@@ -47,6 +51,7 @@ app.get('/', (req, res) =>{
 
 })
 
+// Serving the projects page
 app.get('/Projects', (req, res) => {
     app.use(express.static("static"));
     const __filename = fileURLToPath(import.meta.url);
@@ -54,6 +59,7 @@ app.get('/Projects', (req, res) => {
     res.sendFile(path.join(__dirname, '/static/Projects.html'));
 })
 
+// Retrieving projects from the database for the account in session 
 app.get('/getProjects', (req, res) => {
     const project = req.session.membername;
     const sql = 'SELECT projects.projectname FROM accounts INNER JOIN projects ON accounts.membername=projects.membername WHERE accounts.membername=?'
@@ -66,6 +72,7 @@ app.get('/getProjects', (req, res) => {
     })
 })
 
+// Serving the dashboard page
 app.get('/Dashboard', (req, res) =>{
     app.use(express.static("static"));
     const __filename = fileURLToPath(import.meta.url);
@@ -73,7 +80,7 @@ app.get('/Dashboard', (req, res) =>{
     res.sendFile(path.join(__dirname, '/static/tracker.html'));
 
 })
-
+// Another URL that lead back to the login page when requested by user
 app.get('/login', (req, res) => {
     app.use(express.static("static"));
     const __filename = fileURLToPath(import.meta.url);
@@ -89,14 +96,14 @@ app.get('/Index', (req, res) => {
     res.sendFile(path.join(__dirname, '/static/index.html'));
 
 })
-
+// Serving the teams page
 app.get('/Teams', (req, res) => {
     app.use(express.static("static"));
    const __filename = fileURLToPath(import.meta.url);
    const __dirname = path.dirname(__filename);
    res.sendFile(path.join(__dirname, '/static/Teams.html'));
 })
-
+// Retrieve teams from database for account currently  in session
 app.get('/getTeams', authenticateUser, (req, res) => {
     const membname = req.session.membername;
     const query = 'SELECT teams.teamname FROM projects INNER JOIN teams ON projects.projectname=teams.projectname WHERE projects.membername=?';

@@ -1,3 +1,4 @@
+// Creating function to retrieve members from the database
 async function getMembers(){
     const res = await fetch('/getMembers');
     const datamemb = await res.json();
@@ -10,8 +11,9 @@ async function getMembers(){
         document.getElementById("memb-id").innerHTML = "";
     })
 }
-getMembers();
+getMembers(); // Retrieve members fromthe database
 
+// Function to retrieve teams pertaining to specific members on the member page
 async function getMemberTeams(){
     const mSlider = [];
     const mdropdown = document.getElementById('memb_dropdown');
@@ -26,8 +28,9 @@ async function getMemberTeams(){
     })
 
 }
-getMemberTeams();
+getMemberTeams(); // Retrieving teams pertaining to specific members from the database
 
+// Creating and manipulating the DOM surrounding the member page
 let memberSlider =[];
 let mslide = document.createElement("ol");
 mslide.setAttribute('class', 'memb-order');
@@ -42,12 +45,13 @@ let modalMemb = document.querySelector('.team-form');
   const membForm = document.querySelector('#mb-form');
   const openMform = document.querySelector('#m-button')
 
-
+// Click event for the add member button that presents form for filling out a member's details
   openMform.addEventListener('click', () =>{
     mbForm.show();
     mbInput.value = "";
 } )
 
+// Submission event that adds a specific member to the page upon submission 
 membForm.addEventListener('submit', (e) => {
   let mbfInput = document.getElementById("memb-input").value;
   membList.innerHTML = mbfInput;
@@ -56,7 +60,7 @@ membForm.addEventListener('submit', (e) => {
 })
 
   
-
+// Function component to add multiple unique members to a page
     function addMember(){
         memberSlider.length =+2;
         for(memberSlider.length === 0; memberSlider.length > 0; document.getElementById("m-button").addEventListener('click', memberSlider.length--)){
