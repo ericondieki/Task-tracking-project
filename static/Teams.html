@@ -79,6 +79,13 @@
 
 <div class="team-content">
     <h2>Teams</h2>
+    <div style="width: 50%;  transform: translate(-50%, -50%); margin-left: 50%; margin-top: -20px;" class="input-group mb-3">
+        <input style="outline: none;" type="search" class="form-control" placeholder="Search Teams" aria-label="Search" aria-describedby="button-addon2">
+        <button style="outline: none;" class="btn btn-outline-secondary" type="button" id="button-addon2">
+          <i class="fa fa-search"></i>
+        </button>
+        <select style="outline: none;" class="team-select" aria-label="Sort By"> <option selected disabled hidden>Filter</option></select>
+      </div>
     <p class="team-par" id="team-id">
         NO TEAMS CREATED
     </p>
@@ -100,6 +107,9 @@
     </dialog>
 
     <button class="team-btn" id="t-button" ></button>    
+     <dialog class="team-modal">
+        
+     </dialog>
    
 </div>
 

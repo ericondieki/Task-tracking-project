@@ -6,7 +6,8 @@ async function getTeams(){
  teamSlider.push(datat);
  const tarr = teamSlider[0];
  tarr.forEach((item, index) => {
-  slidePar.innerHTML = Object.values(tarr[index]);
+  slidePar.innerHTML = tarr[index].teamname;
+  teamBadge.innerHTML = tarr[index].projectname;
   finalSlide.appendChild(tslide.cloneNode(true));
   document.getElementById("team-id").innerHTML = "";
  })
@@ -36,11 +37,22 @@ getTasks(); // Retrieve tasks from the database
 // Creating the manpulatng the DOM element surrounging the teams page
 let teamSlider = [];
 let tslide = document.createElement("div");
-tslide.setAttribute('class', 'slide');
-let slidePar = document.createElement("p");
-slidePar.setAttribute('class', 't-title');
+tslide.setAttribute('class', 'card slide');
+tslide.setAttribute('onclick', 'openTeams(this)');
+let teamImg = document.createElement("img");
+teamImg.setAttribute("class", "card-img-top");
+let teamBod = document.createElement('div');
+teamBod.setAttribute("class", "card-body")
+let slidePar = document.createElement("h5");
+slidePar.setAttribute('class', 'card-title t-title');
+let teamBadge = document.createElement("span");
+teamBadge.setAttribute("class", "badge bg-secondary p-badge");
+teamBadge.innerHTML = "Project Teams";
 let finalSlide = document.getElementById("t-scroll");
-  tslide.appendChild(slidePar);
+  teamBod.appendChild(slidePar);
+  teamBod.appendChild(teamBadge);
+  tslide.appendChild(teamImg);
+  tslide.appendChild(teamBod);
   let modalPos = document.querySelector('#t-form');
   let tInputs = document.querySelector('#team-input');
   
@@ -136,3 +148,16 @@ function addTask(){
     document.getElementById("task-id").innerHTML = "No Tasks Created";
 }
 
+
+function openTeams(clickedSlide){
+  const tmodal = document.querySelector(".team-modal");
+  const thead = document.createElement("h1");
+  thead.setAttribute("class", "team-head");
+  thead.innerHTML = clickedSlide.querySelector(".t-title").innerHTML;
+  if(tmodal.style.display === "block"){
+    tmodal.style.display = "none";
+  }
+  tmodal.innerHTML = "";
+  tmodal.appendChild(thead);
+  tmodal.style.display = "block";
+}

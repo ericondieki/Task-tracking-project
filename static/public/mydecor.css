@@ -6,12 +6,15 @@
     font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
-html{
-    overflow-x: hidden;
-    overflow-y: hidden;
+
+
+body{
+    height: auto !important;
+    overflow-y: auto !important;
 }
 
-
+body::-webkit-scrollbar{
+}
 
 .sidenav{
     height: 50px;
@@ -30,7 +33,8 @@ html{
 
 .sidenav a{
 font-size: 20px;
-display: block;
+display: flex;
+justify-content: center;
 color: white;
 height: 100%;
 padding-top: 9px;
@@ -43,20 +47,20 @@ cursor: pointer;
 
 
 .sidenav a:hover{
-    border-bottom: 2px solid black;
     color: black;
-    transition: all 0.3s ease-in-out;
+    transition: all 0.1s ease-in-out;
 }
 
 .side-list{
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     list-style-type: none;
     padding-left: 0;
     margin-left: 0;
 }
 
 .side-list li{
+    flex: 1;
     float: left;
     height: 100%;
     padding-left: 4%;
@@ -86,7 +90,7 @@ height: 81%;
     font-size: 1.2rem;
     position: sticky;
     top: 0;
-    z-index: 999;
+    z-index: 20;
     background-size: cover;
 }
 
@@ -157,24 +161,20 @@ width: 100%;
     align-items: center;
     text-decoration: none;
     padding: 10px 20px;
-    height: 100%;
+    height: 35px;
     width: 100%;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     border: none;
     outline: none;
-    border-radius: 4px;
-    background: #f77062;
+    background: black;
     color: #fff;
-    background-image: linear-gradient(to top, rgb(255, 136, 0) 0%, rgb(204, 85, 0) 100%);
     cursor: pointer;
 }
 
 .button:hover {
-    background: #4837ff;
-    background-image: linear-gradient(to top, #4837ff 0%, white 100%);
-    transition: all 0.3s ease;
-    font-size: 25px;
-    color: black;
+    color: orange;
+    border-bottom: 1px solid orange;
+    transition: all 0.1s ease;
 }
 
 .navbar__link:hover {
@@ -344,12 +344,11 @@ font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida San
 
 
 .project-page{
-    position: absolute;
+    position: relative;
     height: 81%;
     width: 100%;
-    background-image: linear-gradient(to bottom, white 0%, rgb(190, 190, 190) 100%);
+    background-color: #fff;
     background-size: cover;
-    padding-right: 50px;
     z-index: 9;
    
 }
@@ -359,6 +358,7 @@ font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida San
     height: 100%;
     width: 100%;
     z-index: 10;
+    padding-bottom: 30px;
 }
 
 .project-content h1{
@@ -390,12 +390,13 @@ font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida San
 }
 
 .project-slide{
-    border: 0.1px solid black;
-    background: rgba(149, 165, 166, 0.5);
-    width: 100%;
-    height: 80px;
-    margin-bottom: 20px;
-    margin-top: 20px;
+    border: 0.1px solid rgba(149, 165, 166, 0.9);
+    background: white;
+    border-right: none;
+    border-left: none;
+    width: 75%;
+    margin-left: 15%;
+    height: 220px;
 }
 
 
@@ -409,25 +410,29 @@ font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida San
 }
 
 .project-slide:hover{
-    width: 90%;
-    height: 90px;
-    transition: all 0.3s ease-in-out;
-    background: rgba(149, 165, 166, 0.7);
+    transition: all 0.1s ease-in-out;
+    background: rgba(149, 165, 166, 0.2);
     cursor: pointer;
 }
 
+.p-badge{
+    border-radius: 30px;
+    margin-left: 20px;
+}
+
 .p-scroller{
-    max-height: 400px;
+    padding-bottom: 50px;
     min-height: 140px;
-    overflow-y: auto;
+    margin-top: 100px;
     overscroll-behavior-inline: contain;
     position: relative;
 }
 
+
 .proj-btn{
     transform: translate(-50%, -50%);
-    margin-left: 50%;
-    margin-top: 25px;
+    margin-left: 95%;
+    margin-top: -60px;
     height: 40px;
     width: 40px;
     background: #f77062;
@@ -454,11 +459,10 @@ font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida San
 }
 
 .proj-btn:hover{
-    transform-origin: top left;
-    transform: translate(-50%, -50%) scale(1.3);
-    background: #4837ff;
-    background-image: linear-gradient(to top, #4837ff 0%, white 100%);
+    
+    background: black;
     transition: all 0.3s ease-in-out;
+    cursor: pointer;
 }
 
 .project-form{
@@ -466,9 +470,9 @@ font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida San
     border: 1px solid black;
     transform: translate(-50%, -50%);
     margin-left: 50%;
-    z-index: 15;
+    z-index: 40;
     bottom: 70px;
-    height: 240px;
+    height: 300px;
     width: 550px;
     position: fixed;
 }
@@ -480,22 +484,66 @@ font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida San
 }
 
 .project-input{
-    display: flex;
+transform: translateX(-50%);
 height: 40px;
 width: 300px;
-margin-left: 100px;
+margin-left: 50%;
 margin-top: 20px;
 font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
-.project-modal{
-    position: fixed;
-  transform: translate(-50%, -50%);
-  margin-left: 50%;
-  height: 400px;
-  width: 1200px;
-  z-index: 15;
+#proj-desc{
+    transform: translateX(-50%);
+    height: 80px;
+    resize: none;
+    width: 300px;
+    margin-left: 50%;
+    margin-top: 20px;
+    overflow: scroll;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
+
+.confirm-proj{
+    transform: translateX(-50%);
+    margin-left: 50%;
+    margin-top: 40px;
+    height: 35px;
+    width: 100px;
+    font-size: 20px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    background: #f77062;
+    background-image: linear-gradient(to top, rgb(255, 136, 0) 0%, #ffb199 100%);
+    color: white;
+    border: none;
+}
+
+.confirm-proj:hover{
+    background: black;
+}
+
+.project-modal {
+    position: fixed;
+    border: 1px solid black;
+    border-right: none;
+    left: 200%; /* Start off-screen to the right */
+    top: 0;
+    height: 100vh;
+    width: 35%;
+    background-color: white;
+    z-index: 50;
+    display: block;
+    transition: transform 0.4s ease;
+    transform: translateX(200%);
+  }
+  
+  .project-modal.active {
+    left: 65%; /* Slide in from the right */
+    display: block;
+    transform: translateX(0);
+  }
+
+
+
 
 .proj-head{
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
@@ -528,7 +576,6 @@ font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida San
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     position: relative;
 }
-
 
 .team-par {
     transform: translate(-50%, -50%);
@@ -613,26 +660,39 @@ position: relative;
 
 
 .slide{
-    background-image: url('teampic.jpg');
     background-size: cover;
     height: 200px;
-    width: 400px;
+    min-width: 200px;
     cursor: pointer;
-    border-radius: 25px; 
 }
 
 .slide p{
     padding-top: 130px;
     padding-left: 13px;
     font-size: 22px;
-    color: white;
+    color: black;
+}
+
+.card-img-top{
+    background-image: url('teampic.jpg');
+    background-size: cover;
+    border: 10px solid white;
+    border-bottom: none;
+    height: 80%;
+    width: 100%;
+}
+
+.card-title{
+    margin-top: 10px;
+}
+
+.badge{
+    border-radius: 30px;
 }
 
 .slide:hover{
     height: 220px;
-    width: 420px;
     transition: all 0.3s ease-in-out;
-    border-radius: 15px;
 }
 
 .slide:hover p{
@@ -700,6 +760,16 @@ font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida San
 #team-map{
     margin-left: 90px;
     margin-bottom: 20px;
+}
+
+.team-modal{
+    position: fixed;
+    transform: translate(-50%, -50%);
+    margin-left: 50%;
+    margin-top: -100px;
+    height: 400px;
+    width: 60%;
+    z-index: 15;
 }
 
 .pic-map{

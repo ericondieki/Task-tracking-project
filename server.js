@@ -62,7 +62,7 @@ app.get('/Projects', (req, res) => {
 // Retrieving projects from the database for the account in session 
 app.get('/getProjects', (req, res) => {
     const project = req.session.membername;
-    const sql = 'SELECT projects.projectname FROM accounts INNER JOIN projects ON accounts.membername=projects.membername WHERE accounts.membername=?'
+    const sql = 'SELECT projects.projectname, projects.projdescription, teams.teamname FROM accounts INNER JOIN projects ON accounts.membername=projects.membername LEFT JOIN teams ON projects.projectname=teams.projectname WHERE accounts.membername=?'
     pool.query(sql, [project], (err, results) => {
         if(err) throw err;
         if(results.length>0){
@@ -106,7 +106,7 @@ app.get('/Teams', (req, res) => {
 // Retrieve teams from database for account currently  in session
 app.get('/getTeams', authenticateUser, (req, res) => {
     const membname = req.session.membername;
-    const query = 'SELECT teams.teamname FROM projects INNER JOIN teams ON projects.projectname=teams.projectname WHERE projects.membername=?';
+    const query = 'SELECT teams.teamname, teams.projectname FROM projects INNER JOIN teams ON projects.projectname=teams.projectname WHERE projects.membername=?';
     pool.query(query, [membname], (err, tmresults) => {
         if (err) throw err;
         if(tmresults.length>0){
@@ -267,13 +267,15 @@ app.post('/Projects', (req, res) => {
     const projInput = req.body;
     const fproj = Object.values(projInput);
     const fpInput = {
-        projectname: String(fproj),
+        projectname: String(fproj[0]),
+        projdescription: String(fproj[1]),
         membername: String(memb)
     }
 console.log(fproj[0]);
 console.log(memb);
     const schema = Joi.object({
         projectname : Joi.string().max(20).required(),
+        projdescription: Joi.string().required(),
         membername : Joi.string().max(50).required()
     });
     const result = schema.validate(fpInput);
@@ -284,8 +286,8 @@ console.log(memb);
     pool.query(sql, fpInput, (err, results) => {
         if(err) throw err;
         console.log(results);
-    })
-    res.status(204).json(req.body);
+       })
+       res.status(204).json(req.body);
 })
 
 app.post('/Teams', (req, res) => {
