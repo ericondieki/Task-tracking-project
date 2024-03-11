@@ -60,9 +60,9 @@ let finalSlide = document.getElementById("t-scroll");
 let taskSlider = [];
 let tskslide = document.createElement("div");
 tskslide.setAttribute('class', 'big-task');
+tskslide.setAttribute('onclick', 'openTasks(this)');
 let tskTitle = document.createElement("h1S");
-tskTitle.setAttribute('class', 'task-title');
-
+tskTitle.setAttribute('class', 'task-title')
 let bgPrior = document.createElement("p");
 bgPrior.setAttribute('class', 'big-priority');
 bgPrior.innerHTML = "";
@@ -160,4 +160,19 @@ function openTeams(clickedSlide){
   tmodal.appendChild(thead);
   tmodal.classList.add("active");
   console.log("You pushed it!");
+}
+
+function openTasks(clickedSlide){
+  const tskmdoal = document.querySelector(".task-modal");
+  const tskhead = document.createElement("h1");
+  tskhead.setAttribute("class", "task-head");
+  tskhead.innerHTML = clickedSlide.querySelector(".task-title").innerHTML;
+  const activeTask = tskmdoal.classList.contains("active");
+  if(activeTask){
+    tskmdoal.classList.remove("active");
+  }
+  tskmdoal.innerHTML = "";
+  tskmdoal.appendChild(tskhead);
+  tskmdoal.classList.add("active");
+  console.log("You pushed it!")
 }
