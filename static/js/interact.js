@@ -27,7 +27,7 @@ async function getTasks(){
     ttskarr = tskarr[index];
     console.log(ttskarr);
     tskTitle.innerHTML = Object(ttskarr["taskname"]);
-    tskName.innerHTML = Object(ttskarr['teamname']);
+  
     finalTskslide.appendChild(tskslide.cloneNode(true));
     document.getElementById("task-id").innerHTML = "";
   })
@@ -60,17 +60,15 @@ let finalSlide = document.getElementById("t-scroll");
 let taskSlider = [];
 let tskslide = document.createElement("div");
 tskslide.setAttribute('class', 'big-task');
-let tskTitle = document.createElement("p");
+let tskTitle = document.createElement("h1S");
 tskTitle.setAttribute('class', 'task-title');
-let tskName = document.createElement("div");
-tskName.setAttribute('class', 'task-name');
-tskName.innerHTML = "Team Name";
+
 let bgPrior = document.createElement("p");
 bgPrior.setAttribute('class', 'big-priority');
 bgPrior.innerHTML = "";
 let finalTskslide = document.getElementById("tsk-scroll");
 tskslide.appendChild(tskTitle);
-tskslide.appendChild(tskName);
+
 tskslide.appendChild(bgPrior);
 tskInputs = document.querySelector('#task-input');
 
@@ -154,10 +152,12 @@ function openTeams(clickedSlide){
   const thead = document.createElement("h1");
   thead.setAttribute("class", "team-head");
   thead.innerHTML = clickedSlide.querySelector(".t-title").innerHTML;
-  if(tmodal.style.display === "block"){
-    tmodal.style.display = "none";
+  const activeTeam = tmodal.classList.contains("active");
+  if(activeTeam){
+    tmodal.classList.remove("active");
   }
   tmodal.innerHTML = "";
   tmodal.appendChild(thead);
-  tmodal.style.display = "block";
+  tmodal.classList.add("active");
+  console.log("You pushed it!");
 }
