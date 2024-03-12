@@ -6,9 +6,11 @@ async function getMembers(){
     memberSlider.push(datamemb);
     const mtarr = memberSlider[0];
     mtarr.forEach((item, index) => {
-        membList.innerHTML = Object.values(mtarr[index]);
-        mslide.appendChild(membList.cloneNode(true));
-        document.getElementById("memb-id").innerHTML = "";
+        mid.innerHTML = mtarr[index].membID;
+        mname.innerHTML = mtarr[index].membername;
+        memail.innerHTML = mtarr[index].membemail;
+        mteam.innerHTML = mtarr[index].teamname;
+        membtable.appendChild(mtable.cloneNode(true));
     })
 }
 getMembers(); // Retrieve members fromthe database
@@ -32,15 +34,24 @@ getMemberTeams(); // Retrieving teams pertaining to specific members from the da
 
 // Creating and manipulating the DOM surrounding the member page
 let memberSlider =[];
-let mslide = document.createElement("ol");
-mslide.setAttribute('class', 'memb-order');
-let membList = document.createElement("li");
-membList.setAttribute('class', 'memblist');
-let finalmemb = document.getElementById("m-scroll");
-finalmemb.appendChild(mslide);
-let modalMemb = document.querySelector('.team-form');
-  let mbInput = document.querySelector('#memb-input');
+let membtable = document.querySelector(".table-body");
+let mtable = document.createElement("tr");
+let mid = document.createElement("td");
+mid.innerHTML = "1";
+let mname = document.createElement("td");
+mname.setAttribute("style", "color: black;");
+mname.innerHTML = "Erick Getange";
+let memail = document.createElement("td");
+memail.innerHTML = "ondiekidaystar@gmail.com";
+let mteam = document.createElement("td");
+mteam.innerHTML = "Team Avatar";
+mtable.appendChild(mid);
+mtable.appendChild(mname);
+mtable.appendChild(memail);
+mtable.appendChild(mteam);
 
+  let midNo = 1;
+  const mbInput = document.getElementById("memb-input");
   const mbForm = document.querySelector('#m-form');
   const membForm = document.querySelector('#mb-form');
   const openMform = document.querySelector('#m-button')
@@ -49,12 +60,18 @@ let modalMemb = document.querySelector('.team-form');
   openMform.addEventListener('click', () =>{
     mbForm.show();
     mbInput.value = "";
+    document.getElementById("member-id").value = "";
 } )
 
 // Submission event that adds a specific member to the page upon submission 
 membForm.addEventListener('submit', (e) => {
   let mbfInput = document.getElementById("memb-input").value;
-  membList.innerHTML = mbfInput;
+  let einput = document.getElementById("member-id").value;
+  let dropinput = document.getElementById("memb_dropdown").value;
+  mid.innerHTML = midNo;
+  mname.innerHTML = mbfInput;
+  memail.innerHTML = einput;
+  mteam.innerHTML = dropinput;
   mbForm.close();
   addMember();
 })
@@ -64,11 +81,10 @@ membForm.addEventListener('submit', (e) => {
     function addMember(){
         memberSlider.length =+2;
         for(memberSlider.length === 0; memberSlider.length > 0; document.getElementById("m-button").addEventListener('click', memberSlider.length--)){
-            mslide.appendChild(membList.cloneNode(true));
-            document.getElementById("memb-id").innerHTML = "";
+            midNo += 1;
+            membtable.appendChild(mtable.cloneNode(true));
             if(memberSlider.length === 21){
                 break;
             }
         }
-        document.getElementById("memb-id").innerHTML = "No Members Added";
     }

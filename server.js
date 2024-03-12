@@ -168,7 +168,7 @@ app.get('/Members', (req, res) => {
 
 app.get('/getMembers', authenticateUser, (req, res) => {
     const memb = req.session.membername;
-    const query = 'SELECT members.membername FROM projects INNER JOIN teams ON projects.projectname=teams.projectname INNER JOIN members ON teams.teamname=members.teamname WHERE projects.membername=?';
+    const query = 'SELECT members.membID, members.membername, members.membemail, members.teamname FROM projects INNER JOIN teams ON projects.projectname=teams.projectname INNER JOIN members ON teams.teamname=members.teamname WHERE projects.membername=?';
     pool.query(query, [memb], (err, results) => {
         if (err) throw err;
         if(results.length>0){
